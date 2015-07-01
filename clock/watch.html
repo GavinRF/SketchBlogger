@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+
+<style type="text/css">
+
+#clock {position: relative;width: 500px;height: 500px;background-image: url('https://lh5.googleusercontent.com/-Gzu2qBv_78U/T4ro-qYgEyI/AAAAAAAAAtU/LOLFwcBVIvM/s500/watch.png'); margin:50px auto;}
+
+#clock div {position: absolute;}
+
+#secondHand {
+-moz-animation-iteration-count: infinite;
+-moz-animation-timing-function: linear;
+-moz-animation-duration:60s;
+-moz-animation-name: seconds;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-timing-function: linear;
+-webkit-animation-duration:60s;
+-webkit-animation-name: seconds;
+}
+@-moz-keyframes seconds {
+0% {-moz-transform: rotate(0deg)}
+100% {-moz-transform: rotate(360deg)}
+}
+@-webkit-keyframes seconds {
+0% {-webkit-transform: rotate(0deg)}
+100% {-webkit-transform: rotate(360deg)}
+}
+
+#minuteHand {
+-moz-animation-iteration-count: infinite;
+-moz-animation-timing-function: linear;
+-moz-animation-duration:3600s;
+-moz-animation-name: minutes;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-timing-function: linear;
+-webkit-animation-duration:3600s;
+-webkit-animation-name: minutes;
+}
+@-moz-keyframes minutes {
+0% {-moz-transform: rotate(0deg)}
+100% {-moz-transform: rotate(360deg)}
+}
+@-webkit-keyframes minutes {
+0% {-webkit-transform: rotate(0deg)}
+100% {-webkit-transform: rotate(360deg)}
+}
+
+#hourHand {
+-moz-animation-iteration-count: infinite;
+-moz-animation-timing-function: linear;
+-moz-animation-duration:43200s;
+-moz-animation-name: hours;
+-webkit-animation-iteration-count: infinite;
+-webkit-animation-timing-function: linear;
+-webkit-animation-duration:43200s;
+-webkit-animation-name: hours;
+}
+@-moz-keyframes hours {
+0% {-moz-transform: rotate(0deg)}
+100% {-moz-transform: rotate(360deg)}
+}
+@-webkit-keyframes hours {
+0% {-webkit-transform: rotate(0deg)}
+100% {-webkit-transform: rotate(360deg)}
+}
+
+body {
+	background-color: #FFF;
+}
+</style>
+
+</head>
+
+<body>
+
+<div id="clock">
+<div id="hour"><img id="hourHand" src="https://lh3.googleusercontent.com/--eiwTHJ3kqw/T4ro-TWfjFI/AAAAAAAAAs8/atIn1QWPcEI/s500/hour.png" /></div>
+<div id="minute"><img id="minuteHand" src="https://lh5.googleusercontent.com/-YadPThbFwj4/T4ro-UoVLbI/AAAAAAAAAtA/cD3KE2vM-H8/s500/minute.png" /></div>
+<div id="second"><img id="secondHand"  src="https://lh6.googleusercontent.com/-XKBl7EQ02Xs/T4ro-d52Y5I/AAAAAAAAAtI/4Fezc5FT5pA/s500/second.png" /></div>
+</div>
+<br /><br />
+
+<script type="text/javascript">
+/* <![CDATA[ */
+	var angle = 360/60;
+	var date = new Date();
+	var hour = date.getHours();
+	if(hour > 12) hour = hour - 12;
+	var minutehand = date.getMinutes();
+	var secondhand = date.getSeconds();	
+	var hourhand = (360/12)*hour + (360/(12*60))*minutehand;
+	document.getElementById('minute').style.webkitTransform = "rotate("+angle*minutehand+"deg)";
+	document.getElementById('second').style.webkitTransform = "rotate("+angle*secondhand+"deg)";
+	document.getElementById('hour').style.webkitTransform = "rotate("+hourhand+"deg)";
+	document.getElementById('minute').style.MozTransform = "rotate("+angle*minutehand+"deg)";
+	document.getElementById('second').style.MozTransform = "rotate("+angle*secondhand+"deg)";
+	document.getElementById('hour').style.MozTransform = "rotate("+hourhand+"deg)";
+/* ]]> */
+</script>
+
+</body>
+</html>
